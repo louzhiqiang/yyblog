@@ -82,6 +82,21 @@ class ArticleController extends BaseController
     public function actionAdd(){
         return $this->render("add");
     }
+    public function actionList(){
+        $list = Article::find()->orderBy("createTime desc")->asArray()->all();
+        $arr_render = array(
+                'list' => $list,
+            );
+        return $this->render("list", $arr_render);
+    }
+    public function actionUp(){
+        $id = Yii::$app->request->get("id");
+        $info = Article::find()->where(["id" => $id])->asArray()->one();
+        $arr_render = array(
+            'info' => $info,
+        );
+        return $this->render("add", $arr_render);
+    }
     /**
     * @date: 2016年8月14日 上午12:01:47
     * @author: louzhiqiang
@@ -121,5 +136,48 @@ class ArticleController extends BaseController
         
         $this->redirect("/");
         
+    }
+    
+    public function actionUpdate(){
+        $id = Yii::$app->request->post("id");
+        $content = Yii::$app->request->post('content');
+        $userId = "123";
+        $userName = "shuaife";
+        $title = Yii::$app->request->post("title");
+        $file = $_FILES['img'];
+        $author = Yii::$app->request->post("author");
+        $tag  = Yii::$app->request->post("tag");
+        if($id){
+            $model = Article::findOne($id);
+        }else{
+            $model = new Article();
+        }
+        $model->content = $content;
+        $model->author = $author;
+        $model->createTime = time();
+        $model->tag = "|".trim($tag, "|")."|";
+        $model->title = $title;
+        if($file['tmp_name']){
+            $ext = substr($file['type'], strpos($file['type'], "/") + 1);
+            if(strpos(php_uname("s"), "NT")){
+                $path = dirname(__FILE__)."\\..\\web\\assets\\upload\\";
+            }else{
+                $path = dirname(__FILE__)."/../web/assets/upload/";
+            }
+            if(!file_exists($path)){
+                mkdir($path, 777);
+            }
+            $fileName = time().".".$ext;
+            $real_path = $path.$fileName;
+            move_uploaded_file($file["tmp_name"],$real_path);
+            $real_fileName = "/assets/upload/".$fileName;
+            $model->imgUrl = $real_fileName;
+        }
+        
+    
+        $model->save();
+    
+        $this->redirect("/");
+    
     }
 }

@@ -53,31 +53,28 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row tab-content">
-            	<form action="<?php echo isset($info) ? '/index.php?r=article/update' : '/index.php?r=article/create'?>" method="post" enctype="multipart/form-data">
-            		<input type="hidden" value="<?php echo $info['id'];?>" name="id">
-            		作者：<input type="text" name="author" value="<?php echo $info['author'];?>"><br>
-            		标签：<input type="text" name="tag" value="<?php echo $info['tag'];?>"><br>
-            	          图片：<input type="file" name="img"><img style="max-width:100px;" src="<?php echo $info['imgUrl'];?>"><br>
-                   	
-            		标题：
-                            		<!-- 加载编辑器的容器 -->
-                    <script id="title" name="title" type="text/plain"><?php echo $info['title'];?></script>
-                   	内容：
-                            		<!-- 加载编辑器的容器 -->
-                    <script id="content" name="content" type="text/plain"><?php echo $info['content'];?></script>
-                    
-                    <!-- 配置文件 -->
-                    <script type="text/javascript" src="/assets/ueditor/ueditor.config.js"></script>
-                    <!-- 编辑器源码文件 -->
-                    <script type="text/javascript" src="/assets/ueditor/ueditor.all.js"></script>
-                    <!-- 实例化编辑器 -->
-                    <script type="text/javascript">
-                        var ue = UE.getEditor('title');
-                        var ue = UE.getEditor('content');
-                    </script>
-
-                   	<input type="submit" value="提交">
-            	</form>
+            	<table>
+            		<tr>
+            			<th width="5%">文章id</th>
+            			<th width="10%">作者</th>
+            			<th width="15%">写作时间</th>
+            			<th width="27%">标题</th>
+            			<th width="15%">标签</th>
+            			<th width="25%">图片</th>
+            			<th>操作</th>
+            		</tr>
+            		<?php foreach($list as $article):?>
+            		<tr>
+            			<td><?php echo $article['id']?></td>
+            			<td><?php echo $article['author']?></td>
+            			<td><?php echo date("Y-m-d H:i", $article['createTime'])?></td>
+            			<td><?php echo $article['title']?></td>
+            			<td><?php echo $article['tag']?></td>
+            			<td><img style="max-width:100px;" src="<?php echo $article['imgUrl'];?>"></td>
+            			<td><a target="_blank" href="/index.php?r=article/up&id=<?php echo $article['id'];?>">更改</a></td>
+            		</tr>
+            		<?php endforeach;?>
+            	</table>
             </div>
         </div>
     </section>
