@@ -100,7 +100,7 @@ class ArticleController extends BaseController
         if(strpos(php_uname("s"), "NT")){
             $path = dirname(__FILE__)."\\..\\web\\assets\\upload\\";
         }else{
-            $path = dirname(__FILE__)."/../assets/upload/";
+            $path = dirname(__FILE__)."/../web/assets/upload/";
         }
         if(!file_exists($path)){
             mkdir($path, 777);
