@@ -113,7 +113,7 @@ class ArticleController extends BaseController
         $model->content = $content;
         $model->author = $author;
         $model->createTime = time();
-        $model->tag = $tag;
+        $model->tag = "|".$tag."|";
         $model->title = $title;
         $model->imgUrl = $real_fileName;
         

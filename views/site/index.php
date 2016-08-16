@@ -90,10 +90,17 @@
                     </article>
                     <?php endforeach;?>
                     <nav class="pagination clearfix" role="navigation">
+                    	<?php if ($page > 1):?>
+                    	<a href="/?tagName=<?php echo $tagName;?>&page=<?php echo $page-1;?>" class="pull-left">
+                            <i class="icon-chevron-left"></i>
+                        </a>
+                        <?php endif;?>
                         <span class="page-number pull-left">第 <?php echo $page;?> 页 ⁄ 共 <?php echo $totalPage;?> 页</span>
-                        <a href="javascript:;" class="pull-right">
+                        <?php if($totalPage > $page): ?>
+                        <a href="/?tagName=<?php echo $tagName;?>&page=<?php echo $page+1;?>" class="pull-right">
                             <i class="icon-chevron-right"></i>
                         </a>
+                        <?php endif;?>
                     </nav>
                 </main>
                 <!-- 归档目录 -->
@@ -157,7 +164,7 @@
                         <h4 class="title">我的标签</h4>
                         <div class="content tag-cloud">
                         	 <?php foreach ($tagList as $tag):?>
-                             	<a href="/site?tagName=<?php echo $tag;?>#blog-content"><?php echo $tag;?></a>
+                             	<a href="/?tagName=<?php echo $tag;?>"><?php echo $tag;?></a>
                              <?php endforeach;?>
                         </div>
                     </div>

@@ -18,12 +18,20 @@ class SiteController extends BaseController
         //首页文章数据
         $page = Yii::$app->request->get("page", 1);
         $start = ($page-1) * $this->__pernum;
+        $tagName = Yii::$app->request->get("tagName");
+        if($tagName){
+            $where = ['like','tag', "|".$tagName."|"];
+        }else{
+            $where = [];
+        }
         $list = Article::find()
+                    ->where($where)
                     ->offset($start)
                     ->limit($this->__pernum)
                     ->asArray()
                     ->all();
         $count = Article::find()
+                    ->where($where)
                     ->count();
         $totalPage = ceil($count/$this->__pernum);
         
@@ -50,6 +58,7 @@ class SiteController extends BaseController
             'articleList' => $articleList,
             'blogArticleList' => $blogArticleList,
             'tagList'  => $tag_arr,
+            'tagName'  => $tagName,
         );
         return $this->render('index', $arr_render);
     }
