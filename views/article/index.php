@@ -260,7 +260,7 @@
                         <h4 class="title">我的标签</h4>
                         <div class="content tag-cloud">
                              <?php foreach ($tagList as $tag):?>
-                             	<a href="/site?tagName=<?php echo $tag;?>#blog-content"><?php echo $tag;?></a>
+                             	<a href="/?tagName=<?php echo $tag;?>"><?php echo $tag;?></a>
                              <?php endforeach;?>
                         </div>
                     </div>
