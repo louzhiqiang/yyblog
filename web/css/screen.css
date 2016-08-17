@@ -624,6 +624,16 @@ pre {
        -o-transition: all 0.2s ease;
           transition: all 0.2s ease;
 }
+.widget .tag-cloud a.active{
+  background: #f4645f;
+  color: #fff;
+}
+.widget .tag-cloud a i{
+  display: none;
+}
+.widget .tag-cloud a.active i{
+  display: inline-block;
+}
 .widget .tag-cloud a:hover {
   color: #ffffff;
   background: #f4645f;
@@ -777,6 +787,7 @@ pre {
 }
 .back-to-top:hover{
   color: #fff;
+  text-decoration: none;
 }
 .back-to-top i{
   display: block;

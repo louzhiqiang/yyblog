@@ -130,13 +130,15 @@
                           <dl class="dl-horizontal aboutMe-dl">
                             <dt>技能</dt>
                             <dd>精通HTML，Javascript，CSS等web前端开发需要的各项技术；</dd>
-                            <dd>熟练掌握HTML5，CSS3常用标签及方法；（简单列出来几个你熟悉的效果，但是不是很简单的那种效果）</dd>
-                            <dd>熟练使用JQuery，requirejs，less等工具，掌握原生javascript； (列出来一些你熟悉的但是上档次的效果或者前端框架)</dd>
+                            <dd>熟练掌握HTML5，CSS3常用标签及方法；</dd>
+                            <dd>熟练使用JQuery，requirejs，less等工具，精通原生javascript；</dd>
+                            <dd>有较强的前端模块化和组件化思想，追求前端工程化，可维护性</dd> 
+                            <dd>熟练linux开发环境，对于PHP，NodeJS也比较熟悉</dd>
                           </dl>
                         </div>
                         <h4>更多信息</h4>
                         <div class="aboutMe-content">
-                          <p>如果你想了解更多或想要与我交流，可扫一扫下方二维码，与我取得联系。</p>
+                          <p>如果你想了解更多或想要与我交流，可扫一扫下方二维码，添加QQ，与我取得联系。</p>
                             <img src="/assets/img/code.jpg">
                         </div>
                         <footer class="post-footer clearfix">
@@ -161,10 +163,14 @@
                         </div>
                     </div>
                     <div class="widget">
-                        <h4 class="title">我的标签</h4>
+                        <h4 class="title">博客标签云</h4>
                         <div class="content tag-cloud">
                         	 <?php foreach ($tagList as $tag):?>
-                             	<a href="/?tagName=<?php echo $tag;?>"><?php echo $tag;?></a>
+                             	<a <?php if($tagName==$tag):?>href="/"<?php else:?>href="/?tagName=<?php echo $tag;?>"<?php endif;?> <?php if($tagName==$tag):?>class="active"<?php endif;?>>
+                             	<?php echo $tag;?>
+                             	<?php if($tagName==$tag):?><i class="icon-remove"></i><?php endif;?>
+                             	</a>
+                             	
                              <?php endforeach;?>
                         </div>
                     </div>

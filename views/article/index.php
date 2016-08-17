@@ -257,10 +257,11 @@
                         </div>
                     </div>
                     <div class="widget">
-                        <h4 class="title">我的标签</h4>
+                        <h4 class="title">博客标签云</h4>
                         <div class="content tag-cloud">
                              <?php foreach ($tagList as $tag):?>
                              	<a href="/?tagName=<?php echo $tag;?>"><?php echo $tag;?></a>
+                             	<?php if($tagName==$tag):?><i class="icon-remove"></i><?php endif;?>
                              <?php endforeach;?>
                         </div>
                     </div>
