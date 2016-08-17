@@ -75,7 +75,7 @@
                                 <img src="<?php echo $blog['imgUrl'] ? $blog['imgUrl'] : "/assets/img/1.jpg"?>">
                             </div>
                             <div class="post-content">
-                                <p><?php echo mb_substr(strip_tags($blog['content']), 0, 300)."……"?></p>
+                                <p><?php echo mb_substr(strip_tags($blog['content']), 0, 230)."……"?></p>
                             </div>
                             <div class="post-permalink clearfix">
                                 <a href="/index.php?r=article&id=<?php echo $blog['id'];?>" class="btn btn-default pull-left">阅读全文</a>

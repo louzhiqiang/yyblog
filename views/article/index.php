@@ -107,7 +107,7 @@
                                                 <a href="javascript:;" class="ref" messageid="<?php echo $message['id'];?>"><i class="icon-thumbs-down"></i>踩(<?php echo $message['ref'];?>)</a>
                                             </div>
                                         </div>
-                                        <?php if(count($message['list'])):?>
+                                        <?php if(isset($message['list']) && count($message['list'])):?>
                                         <ol class="list-unstyled">
                                         	<?php foreach ($message['list'] as $messageChild):?>
                                             <li>
@@ -137,7 +137,7 @@
                         </div>
                         <div class="leave-message clearfix">
                             <div class="pull-left msg-head">
-                                <img src="<?php echo ($user['userPhoto'] ? $user['userPhoto'] : "/assets/img/de-face.jpg")?>">
+                                <img src="<?php echo (isset($user['userPhoto']) ? $user['userPhoto'] : "/assets/img/de-face.jpg")?>">
                             </div>
                             <form id="form" onsubmit="return false;">
                                 <div class="pull-right msg-text">
