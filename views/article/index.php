@@ -260,8 +260,10 @@
                         <h4 class="title">博客标签云</h4>
                         <div class="content tag-cloud">
                              <?php foreach ($tagList as $tag):?>
-                             	<a href="/?tagName=<?php echo $tag;?>"><?php echo $tag;?></a>
+                             	<a <?php if($tagName==$tag):?>href="/"<?php else:?>href="/?tagName=<?php echo $tag;?>"<?php endif;?> <?php if($tagName==$tag):?>class="active"<?php endif;?>>
+                             	<?php echo $tag;?>
                              	<?php if($tagName==$tag):?><i class="icon-remove"></i><?php endif;?>
+                             	</a>
                              <?php endforeach;?>
                         </div>
                     </div>
