@@ -25,8 +25,8 @@ class MessageController extends BaseController
         $toId      = Yii::$app->request->post("toId");
         $model = new Message();
         $model->createTime = time();
-        $model->userId = "123";
-        $model->userName = "louzhiqiang";
+        $model->userId = ip2long($_SERVER['REMOTE_ADDR']);
+        $model->userName = $_SERVER['REMOTE_ADDR'];
         if(!$toId){
             $model->level = Message::MESSAGE_LEVEL_FIRST;
             $model->parentId = 0;
