@@ -78,7 +78,7 @@
                                 <p><?php echo mb_substr(strip_tags($blog['content']), 0, 230)."……"?></p>
                             </div>
                             <div class="post-permalink clearfix">
-                                <a href="/index.php?r=article&id=<?php echo $blog['id'];?>" class="btn btn-default pull-left">阅读全文</a>
+                                <a href="/index.php?r=article&id=<?php echo $blog['id'];?>&tagName=<?php echo $tagName;?>" class="btn btn-default pull-left">阅读全文</a>
                             </div>
                             <footer class="post-footer clearfix">
                                 <div class="pull-left tag-list">
@@ -170,7 +170,6 @@
                              	<?php echo $tag;?>
                              	<?php if($tagName==$tag):?><i class="icon-remove"></i><?php endif;?>
                              	</a>
-                             	
                              <?php endforeach;?>
                         </div>
                     </div>

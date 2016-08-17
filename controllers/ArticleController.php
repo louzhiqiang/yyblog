@@ -70,6 +70,7 @@ class ArticleController extends BaseController
             'blogArticleList' => $blogArticleList,
             'tagList'  => $tag_arr,
             'messageList' => $message_list,
+            'tagName' => Yii::$app->request->get("tagName"),
         );
         return $this->render('index', $arr_render);
     }
